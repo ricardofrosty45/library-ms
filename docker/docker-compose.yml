@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: library-ms
+    image: library/service
+    build: ./target/docker/library-service/build
+    command: java -jar library-ms-1.0.0-SNAPSHOT.jar
+    ports:
+      - "8080:8080"
