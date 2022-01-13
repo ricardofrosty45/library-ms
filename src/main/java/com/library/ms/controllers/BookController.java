@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.library.ms.dto.request.RentBookRequestDTO;
+import com.library.ms.dto.request.RentOrReturnBookRequestDTO;
 import com.library.ms.dto.response.ErrorResponse;
 import com.library.ms.dto.response.GenericResponseDTO;
 import com.library.ms.entities.BookEntity;
@@ -52,7 +52,7 @@ public class BookController {
 			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
 			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))) })
 	@PutMapping("/rent")
-	public ResponseEntity<?> rentsBook(@Valid @RequestBody final RentBookRequestDTO request, String bookId) {
+	public ResponseEntity<?> rentsBook(@Valid @RequestBody final RentOrReturnBookRequestDTO request, String bookId) {
 		return new ResponseEntity<>(service.rentsBook(request), HttpStatus.OK);
 	}
 
@@ -63,7 +63,7 @@ public class BookController {
 			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
 			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))) })
 	@PutMapping("/return")
-	public ResponseEntity<?> returnsBook(@Valid @RequestBody final RentBookRequestDTO request) {
+	public ResponseEntity<?> returnsBook(@Valid @RequestBody final RentOrReturnBookRequestDTO request) {
 		return new ResponseEntity<>(service.returnsBook(request), HttpStatus.OK);
 	}
 

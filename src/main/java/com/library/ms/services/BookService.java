@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.library.ms.dto.request.RentBookRequestDTO;
+import com.library.ms.dto.request.RentOrReturnBookRequestDTO;
 import com.library.ms.dto.response.GenericResponseDTO;
 import com.library.ms.entities.AdminEntity;
 import com.library.ms.entities.BookEntity;
@@ -40,7 +40,7 @@ public class BookService {
 				.throwsSupplierClientException("All books are rented! please come back and check it later!"));
 	}
 
-	public GenericResponseDTO returnsBook(RentBookRequestDTO request) {
+	public GenericResponseDTO returnsBook(RentOrReturnBookRequestDTO request) {
 
 		BookEntity book = bookRepository.findBookByTitleAndChecksIfRented(request.getTitle());
 		Optional.ofNullable(book).ifPresentOrElse(rentedBook -> {
@@ -58,10 +58,10 @@ public class BookService {
 			throw new BookException("Book doesn't exist in our database");
 		});
 
-		return GenericResponseDTO.builder().message("Book Rented!").build();
+		return GenericResponseDTO.builder().message("Book Returned!").build();
 	}
 
-	public GenericResponseDTO rentsBook(RentBookRequestDTO request) {
+	public GenericResponseDTO rentsBook(RentOrReturnBookRequestDTO request) {
 
 		BookEntity book = bookRepository.findBookByTitleAndChecksIfNotRented(request.getTitle());
 		Optional.ofNullable(book).ifPresentOrElse(rentedBook -> {

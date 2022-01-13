@@ -4,9 +4,12 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import com.library.ms.dto.request.BookRequestDTO;
+import com.library.ms.dto.request.RentOrReturnBookRequestDTO;
+import com.library.ms.entities.AdminEntity;
 import com.library.ms.entities.BookEntity;
 import com.library.ms.entities.UserEntity;
 
@@ -29,6 +32,14 @@ public abstract class MockBuilder {
 	protected final String DELETE_BOOK_MESSAGE = "Book deleted!";
 
 	protected final String GET_ALL_BOOKS_ENDPOINT = "/v1/book";
+
+	protected final String RENT_BOOK_ENDPOINT = "/v1/book/rent";
+
+	protected final String RENT_BOOK_MESSAGE = "Book Rented!";
+
+	protected final String RETURNED_BOOK_MESSAGE = "Book Returned!";
+
+	protected final String RETURN_BOOK_ENDPOINT = "/v1/book/return";
 
 	protected final List<UserEntity> usersList() {
 
@@ -88,6 +99,69 @@ public abstract class MockBuilder {
 		request.setCategory("123");
 		request.setTitle("123");
 		return request;
+
+	}
+
+	protected final RentOrReturnBookRequestDTO rentBookRequest() {
+		RentOrReturnBookRequestDTO request = new RentOrReturnBookRequestDTO();
+		request.setEvent("user");
+		request.setUsername("123");
+		request.setTitle("123");
+		return request;
+
+	}
+
+
+	protected final BookEntity book() {
+
+		return BookEntity.builder().title("123").category("123").bookExamples("123").isRented(true).build();
+	}
+	
+	protected final BookEntity bookTwo() {
+
+		return BookEntity.builder().title("123").category("123").bookExamples("123").isRented(false).build();
+	}
+	
+	
+	protected final BookEntity bookThree() {
+
+		return BookEntity.builder().title("123").category("123").bookExamples("123").isRented(false).build();
+	}
+
+	protected final Optional<UserEntity> buildUser() {
+		List<BookEntity> books = new ArrayList<BookEntity>();
+		books.add(bookTwo());
+		books.add(book());
+		Optional<UserEntity> op = Optional.of(UserEntity.builder().email("Email").rentedBooks(books).build());
+
+		return op;
+
+	}
+	
+	protected final Optional<UserEntity> buildUserTwo() {
+		List<BookEntity> books = new ArrayList<BookEntity>();
+		books.add(bookThree());
+		Optional<UserEntity> op = Optional.of(UserEntity.builder().email("Email").rentedBooks(books).build());
+
+		return op;
+
+	}
+	
+	protected final Optional<AdminEntity> buildAdmin() {
+		List<BookEntity> books = new ArrayList<BookEntity>();
+		books.add(bookThree());
+		Optional<AdminEntity> op = Optional.of(AdminEntity.builder().email("Email").name("123").rentedBooks(books).build());
+
+		return op;
+
+	}
+	
+	
+	protected final AdminEntity buildAdminTwo() {
+		List<BookEntity> books = new ArrayList<BookEntity>();
+		books.add(bookThree());
+
+		return AdminEntity.builder().email("Email").name("123").rentedBooks(books).build();
 
 	}
 
