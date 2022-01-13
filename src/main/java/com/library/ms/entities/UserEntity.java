@@ -1,9 +1,11 @@
 package com.library.ms.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -42,7 +44,11 @@ public class UserEntity {
 
 	@Column(name = "isActive")
 	private boolean isActive;
-	
+
+	@Column(name = "rented_books")
+	@ElementCollection(targetClass = BookEntity.class)
+	private List<BookEntity> rentedBooks;
+
 	public UserEntity() {
 	}
 

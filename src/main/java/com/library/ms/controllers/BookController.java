@@ -1,17 +1,17 @@
 package com.library.ms.controllers;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.library.ms.dto.request.RentBookRequestDTO;
 import com.library.ms.dto.response.ErrorResponse;
 import com.library.ms.dto.response.GenericResponseDTO;
 import com.library.ms.entities.BookEntity;
@@ -38,10 +38,33 @@ public class BookController {
 			"Book" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
 			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = BookEntity.class))) })
 	@GetMapping
 	public ResponseEntity<?> getsAllAvaliableBooks() {
 		return new ResponseEntity<>(service.getsAllNotRentedBooks(), HttpStatus.OK);
+	}
+
+	@Operation(summary = "Rents a book", description = "This endpoint will rent a book", tags = { "Book" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))) })
+	@PutMapping("/rent")
+	public ResponseEntity<?> rentsBook(@Valid @RequestBody final RentBookRequestDTO request, String bookId) {
+		return new ResponseEntity<>(service.rentsBook(request), HttpStatus.OK);
+	}
+
+	@Operation(summary = "Returns a book", description = "This endpoint will return a book", tags = { "Book" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))) })
+	@PutMapping("/return")
+	public ResponseEntity<?> returnsBook(@Valid @RequestBody final RentBookRequestDTO request) {
+		return new ResponseEntity<>(service.returnsBook(request), HttpStatus.OK);
 	}
 
 }

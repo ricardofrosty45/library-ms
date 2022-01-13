@@ -75,11 +75,12 @@ public class AdminController {
 	@Operation(summary = "Deletes a book from database", description = "This endpoint will register and create a new book", tags = {
 			"Admin" })
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = UserEntity.class))),
+			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))),
 			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
 			@ApiResponse(responseCode = "503", description = "Service Unavailable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
 	@DeleteMapping("/book/{bookName}")
-	public ResponseEntity<?> createsAndRegisterNewBook(final String bookName) {
+	public ResponseEntity<?> removesBook(
+			@NotNull(message = "bookName cannot be null") @NotBlank(message = "bookName cannot be empty, please inform us a valid bookName") @PathVariable final String bookName) {
 		return new ResponseEntity<>(service.removesBook(bookName), HttpStatus.OK);
 	}
 

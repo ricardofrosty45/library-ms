@@ -15,7 +15,11 @@ public interface BookRepository extends JpaRepository<BookEntity, String> {
 	@Query(value = "select * from book where is_rented = false", nativeQuery = true)
 	List<BookEntity> findAllNotRentedBooks();
 
-	@Query(value = "select * from book where title = \"title\" and is_rented = false", nativeQuery = true)
+	@Query(value = "select * from book where title = :title and is_rented = false", nativeQuery = true)
 	BookEntity findBookByTitleAndChecksIfNotRented(@Param("title") String title);
+	
+	
+	@Query(value = "select * from book where title = :title and is_rented = true", nativeQuery = true)
+	BookEntity findBookByTitleAndChecksIfRented(@Param("title") String title);
 
 }
