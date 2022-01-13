@@ -52,7 +52,7 @@ public class BookController {
 			@ApiResponse(responseCode = "503", description = "Service Unavaliable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
 			@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))) })
 	@PutMapping("/rent")
-	public ResponseEntity<?> rentsBook(@Valid @RequestBody final RentOrReturnBookRequestDTO request, String bookId) {
+	public ResponseEntity<?> rentsBook(@Valid @RequestBody final RentOrReturnBookRequestDTO request) {
 		return new ResponseEntity<>(service.rentsBook(request), HttpStatus.OK);
 	}
 
