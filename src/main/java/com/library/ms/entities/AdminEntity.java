@@ -22,7 +22,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class AdminEntity {
-	
+
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -43,9 +43,12 @@ public class AdminEntity {
 
 	@Column(name = "isActive")
 	private boolean isActive;
-	
+
 	@Column(name = "rented_books")
-	@ElementCollection(targetClass=BookEntity.class)
+	@ElementCollection(targetClass = BookEntity.class)
 	private List<BookEntity> rentedBooks;
+
+	public AdminEntity() {
+	}
 
 }
