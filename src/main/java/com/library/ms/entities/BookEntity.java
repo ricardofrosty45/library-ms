@@ -22,21 +22,21 @@ public class BookEntity {
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", updatable = false, nullable = false)
+	@Column(name = "id")
 	private String id;
 
 	@Column(name = "title")
 	private String title;
-	
+
 	@Column(name = "category")
 	private String category;
-	
+
 	@Column(name = "book_examples")
 	private String bookExamples;
-	
+
 	@Column(name = "isRented")
 	private boolean isRented;
-	
+
 	public BookEntity() {
 	}
 
