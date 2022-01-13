@@ -21,5 +21,7 @@ public interface BookRepository extends JpaRepository<BookEntity, String> {
 	
 	@Query(value = "select * from book where title = :title and is_rented = true", nativeQuery = true)
 	BookEntity findBookByTitleAndChecksIfRented(@Param("title") String title);
+	
+	BookEntity findByTitle(@Param("title") String title);
 
 }

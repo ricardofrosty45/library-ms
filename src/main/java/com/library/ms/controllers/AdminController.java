@@ -50,6 +50,17 @@ public class AdminController {
 		return new ResponseEntity<>(service.getAllActiveUsers(), HttpStatus.OK);
 	}
 
+	@Operation(summary = "Get's all admins", description = "This endpoint will get all admins", tags = {
+			"Admin" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = UserEntity.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+			@ApiResponse(responseCode = "503", description = "Service Unavailable", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+	@GetMapping("/all")
+	public ResponseEntity<?> getAllAdmins() {
+		return new ResponseEntity<>(service.getAllActiveUsers(), HttpStatus.OK);
+	}
+
 	@Operation(summary = "Inactives a user", description = "This endpoint will inactivates a user", tags = { "Admin" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = GenericResponseDTO.class))),

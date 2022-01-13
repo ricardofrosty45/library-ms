@@ -95,19 +95,38 @@ public class BookService {
 	}
 
 	public void rentsBookByEventAdmin(BookEntity book, AdminEntity entity) {
-		book.setRented(true);
-		List<BookEntity> books = new ArrayList<BookEntity>();
-		books.add(book);
-		entity.setRentedBooks(books);
-		adminRepository.save(entity);
+
+		if (!entity.getRentedBooks().isEmpty()) {
+			book.setRented(true);
+			List<BookEntity> books = entity.getRentedBooks();
+			books.add(book);
+			entity.setRentedBooks(books);
+			adminRepository.save(entity);
+		} else {
+			book.setRented(true);
+			List<BookEntity> books = new ArrayList<BookEntity>();
+			books.add(book);
+			entity.setRentedBooks(books);
+			adminRepository.save(entity);
+		}
 	}
 
 	public void rentsBookByEventUser(BookEntity book, UserEntity entity) {
-		List<BookEntity> books = new ArrayList<BookEntity>();
-		book.setRented(true);
-		books.add(book);
-		entity.setRentedBooks(books);
-		userRepository.save(entity);
+
+		if (!entity.getRentedBooks().isEmpty()) {
+			List<BookEntity> books = entity.getRentedBooks();
+			book.setRented(true);
+			books.add(book);
+			entity.setRentedBooks(books);
+			userRepository.save(entity);
+		} else {
+			List<BookEntity> books = new ArrayList<>();
+			book.setRented(true);
+			books.add(book);
+			entity.setRentedBooks(books);
+			userRepository.save(entity);
+		}
+
 	}
 
 }
