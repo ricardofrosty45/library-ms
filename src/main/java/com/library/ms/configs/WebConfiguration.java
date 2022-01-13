@@ -45,8 +45,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Bean
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI().components(new Components())
-				.info(new Info().title("Product API").description(
-						"API responsible for create itens, read (With Filters) itens, update itens, delete itens")
+				.info(new Info().title("Library API").description(
+						"API responsible for makes some library services")
 						.version(appVersion));
 	}
 
