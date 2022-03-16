@@ -1,4 +1,4 @@
-# library-ms - AXIANS Test Project
+# library-ms - Sample project - Open Source
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ricardofrosty45/library-ms)
 
