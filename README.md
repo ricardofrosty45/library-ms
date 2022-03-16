@@ -2,7 +2,14 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ricardofrosty45/library-ms)
 
-this microservice was a test by AXIANS, where i've got challenged to make not only the back end but also the front end using Spring boot + Java + ReactJs
+This is a microservice, i've used Java with spring boot and mysql as a database. 
+This API is a free open source code so you can study or clone and do whatever you want with it,there's no token validations whatsoever.
+I've used the auth part into the front end so i can simplfy the project for begginers
+If you want to run the full application with front end, you should see the project here
+
+```sh
+https://github.com/ricardofrosty45/library-app
+```
 
 ## Features
 
@@ -21,7 +28,6 @@ https://www.docker.com/products/docker-desktop
 
 If you want to read my api documentation, here's the URL after you run the docker-compose file
 
-
 ```sh
 http://localhost:8080/swagger-ui/index.html?configUrl=/docs.json/swagger-config#/
 ```
@@ -39,10 +45,3 @@ docker-compose up
 ```
 
 It will automatically build a mysql container and this microservice container and it's good to run now!
-
-
-## DEV Annotations
-
-- First of all, i've created a admin / user entity builder, when you start the application it should autoamtically create new users and admin's.their "names" are random names they're random generated. Every name is unique in this database
-
-- I've used on the front end a auth, it's called firebase.
