@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ricardofrosty45/library-ms)
 
-[![test](https://img.freepik.com/vetores-premium/formas-organicas-aleatorias-pedra-irregular-organica-ou-manchas-pretas-silhuetas-abstratas-de-seixos_502320-785.jpg?w=740)](https://github.com/ricardofrosty45/library-ms)
+[![test](https://i.imgur.com/9fPR8YE.jpg)](https://github.com/ricardofrosty45/library-ms)
 
 
 This is a microservice, i've used Java with spring boot and mysql as a database. 
