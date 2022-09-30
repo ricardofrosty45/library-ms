@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ricardofrosty45/library-ms)
 
-[![test](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FUPagSemSentidoAleatorias%2F&psig=AOvVaw1yHNmS6ds48l9OVJ8CzVGG&ust=1664591593010000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCOit_oa9u_oCFQAAAAAdAAAAABAD)](https://github.com/ricardofrosty45/library-ms)
+[![test](https://img.freepik.com/vetores-premium/formas-organicas-aleatorias-pedra-irregular-organica-ou-manchas-pretas-silhuetas-abstratas-de-seixos_502320-785.jpg?w=740)](https://github.com/ricardofrosty45/library-ms)
 
 
 This is a microservice, i've used Java with spring boot and mysql as a database. 
