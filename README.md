@@ -2,8 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ricardofrosty45/library-ms)
 
-
-![test](http://url/to/img.png](https://imgur.com/a/jQydM5X))
+[![test](https://imgur.com/a/jQydM5X)](https://github.com/ricardofrosty45/library-ms)
 
 
 This is a microservice, i've used Java with spring boot and mysql as a database. 
